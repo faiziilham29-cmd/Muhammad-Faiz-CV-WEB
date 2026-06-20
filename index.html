@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV Muhammad Faiz Ilham</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0a0a0f;
+      --surface: #13131a;
+      --card:    #1a1a25;
+      --accent:  #7c5cfc;
+      --accent2: #c084fc;
+      --text:    #e8e8f0;
+      --muted:   #7a7a9a;
+      --border:  rgba(124,92,252,.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+      z-index: 100;
+      display: flex; gap: 4px; align-items: center;
+      background: rgba(19,19,26,.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 8px;
+      margin-top: 20px;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'Syne', sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      padding: 8px 18px;
+      border-radius: 999px;
+      transition: color .2s, background .2s;
+    }
+    nav a:hover { color: var(--text); background: rgba(124,92,252,.15); }
+    nav a.active { color: #fff; background: var(--accent); }
+
+    /* ── SECTIONS ── */
+    section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 120px 24px 80px; }
+
+    .container { max-width: 860px; width: 100%; margin: 0 auto; }
+
+    /* ── HOME ── */
+    #home {
+      position: relative;
+      overflow: hidden;
+    }
+    .glow-orb {
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: .25;
+      pointer-events: none;
+    }
+    .orb1 { background: var(--accent);  top: -100px; right: -100px; }
+    .orb2 { background: var(--accent2); bottom: -100px; left: -80px; }
+
+    .home-inner { position: relative; z-index: 1; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--accent2);
+      font-family: 'Syne', sans-serif; font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--accent2);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.6rem, 8vw, 5.2rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      margin-bottom: 24px;
+    }
+    h1 .line2 {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .home-desc {
+      font-size: 1.1rem; color: var(--muted); max-width: 520px; margin-bottom: 40px;
+    }
+
+    .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 13px 28px;
+      border-radius: 999px;
+      font-family: 'Syne', sans-serif;
+      font-size: .9rem; font-weight: 600;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s, opacity .2s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      box-shadow: 0 4px 24px rgba(124,92,252,.35);
+    }
+    .btn-primary:hover { box-shadow: 0 8px 32px rgba(124,92,252,.5); }
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+    .btn-ghost:hover { background: var(--card); }
+
+    /* ── SECTION HEADER ── */
+    .section-label {
+      font-family: 'Syne', sans-serif; font-size: .72rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800; letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+    .section-desc { color: var(--muted); max-width: 480px; margin-bottom: 48px; }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    @media(max-width:640px){ .about-grid{ grid-template-columns:1fr; } }
+
+    .avatar-wrap {
+      position: relative;
+    }
+        .avatar-box {
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 3 / 4;        /* Untuk Rasio foto */
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;           /* no contain */
+      object-position: center top; /* untuk fokus ke wajah */
+    }
+    .avatar-box::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(124,92,252,.15), transparent);
+    }
+    .tag-bubble {
+      position: absolute;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: .75rem; font-family: 'Syne', sans-serif; font-weight: 600;
+      white-space: nowrap;
+    }
+    .tag1 { top: 16px; right: -16px; color: var(--accent2); }
+    .tag2 { bottom: 24px; left: -20px; color: var(--accent); }
+
+    .skills-row {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px;
+    }
+    .skill-chip {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: .78rem;
+      color: var(--muted);
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      letter-spacing: .03em;
+    }
+
+    /* ── RESUME ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item {
+      display: grid; grid-template-columns: 120px 1fr;
+      gap: 0 24px; padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .tl-year {
+      font-family: 'Syne', sans-serif; font-size: .78rem; font-weight: 700;
+      color: var(--accent); padding-top: 4px; letter-spacing: .05em;
+    }
+    .tl-role {
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .tl-company { color: var(--muted); font-size: .88rem; margin-bottom: 10px; }
+    .tl-desc { color: var(--muted); font-size: .88rem; line-height: 1.65; }
+
+    /* ── PORTFOLIO ── */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px;
+    }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.4);
+      border-color: rgba(124,92,252,.4);
+    }
+    .project-thumb {
+      height: 160px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-body { padding: 20px; }
+    .project-tag {
+      font-size: .68rem; font-family: 'Syne', sans-serif; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent2); margin-bottom: 8px;
+    }
+    .project-title {
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .project-desc { color: var(--muted); font-size: .82rem; line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 56px 48px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .contact-box::before {
+      content: '';
+      position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+      width: 300px; height: 300px; border-radius: 50%;
+      background: var(--accent); filter: blur(90px); opacity: .12;
+      pointer-events: none;
+    }
+    .contact-box h2 { margin-bottom: 12px; }
+    .contact-box .section-desc { margin: 0 auto 36px; }
+
+    .contact-links {
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 32px;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 999px; padding: 10px 20px;
+      color: var(--text); text-decoration: none;
+      font-family: 'Syne', sans-serif; font-size: .82rem; font-weight: 600;
+      transition: border-color .2s, background .2s;
+    }
+    .contact-link:hover { border-color: var(--accent); background: var(--card); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 24px;
+      color: var(--muted); font-size: .78rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media(max-width:480px){
+      nav a { padding: 8px 12px; font-size: .75rem; }
+      .contact-box { padding: 36px 24px; }
+      .timeline-item { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="main-nav">
+  <a href="#home"      class="nav-link active">Home</a>
+  <a href="#about"     class="nav-link">About</a>
+  <a href="#resume"    class="nav-link">Resume</a>
+  <a href="#portfolio" class="nav-link">Portfolio</a>
+  <a href="#contact"   class="nav-link">Contact</a>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="glow-orb orb1"></div>
+  <div class="glow-orb orb2"></div>
+  <div class="container home-inner reveal">
+    <!-- <p class="eyebrow">Available for work</p> -->
+    <h1>
+      Muhammad Faiz Ilham<br>
+      <span class="line2">Junior Software Developer<br></span>
+    </h1>
+    <!-- <p class="home-desc">
+      Saya membangun produk digital yang terasa hidup — dari wireframe pertama sampai baris kode terakhir. Berbasis di Bandung, bekerja untuk dunia.
+    </p> -->
+    <div class="btn-group">
+      <a href="#portfolio" class="btn btn-primary">Lihat Portofolio</a>
+      <a href="#contact"   class="btn btn-ghost">Hubungi Saya</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT  -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="avatar-wrap reveal">
+        <div class="avatar-box"> <img src="Foto.jpeg" style="width:100%; height:100%; object-fit:contain; border-radius:24px;"></div>
+        <div class="tag-bubble tag1">✦ SISWA SMKN 2 KOTA SUKABUMI</div>
+        <div class="tag-bubble tag2">📍 Sukabumi</div>
+      </div>
+      <div class="reveal">
+        <!-- <p class="section-label">Tentang Saya</p> -->
+        <h2 class="section-label">Tentang Saya</h2>
+        <p class="section-desc" style="margin-bottom:20px;">
+          Saya adalah siswa SMKN 2 Kota Sukabumi yang senang belajar tentang Teknologi.Saya punya dasar yang cukup di pemrograman web menggunakan Laravel dan SQL. Saya juga eksplorasi desain 3D di blender. Dan ingin memberikan hasil yang terbaik <em></em>.
+        </p>
+
+        <!-- <p style="color:var(--muted); font-size:.9rem; line-height:1.75; margin-bottom:28px;">
+          Dengan latar belakang di Teknik Informatika dan 5 tahun pengalaman di industri digital, saya telah membantu startup hingga perusahaan Fortune 500 membangun produk yang dicintai penggunanya.
+        </p> -->
+
+        <h2 class="section-label">Keahlian Saya</h2>
+        <div class="skills-row">
+          <span class="skill-chip">Figma</span>
+          <span class="skill-chip">Blender</span>
+          <span class="skill-chip">VS CODE</span>
+          <span class="skill-chip">Visual Studio 2022</span>
+          <span class="skill-chip">Laravel</span>
+          <span class="skill-chip">HTML</span>
+          <span class="skill-chip">CSS</span>
+          <span class="skill-chip">Java Script</span>
+          <span class="skill-chip">Canva</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="container">
+    <p class="section-label reveal">Perjalanan</p>
+    <h2 class="reveal">Resume</h2>
+    <p class="section-desc reveal">Dari SD hingga SMK — inilah jejak saya.</p>
+
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="tl-year">2024 – Sekarang</div>
+        <div>
+          <p class="tl-role">SMKN 2 Kota Sukabumi</p>
+          <p class="tl-company">"Rekayasa Perangkat Lunak"</p>
+          <!-- <p class="tl-desc">"UNTUK KATA-KATA"</p> -->
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year">2021 – 2024</div>
+        <div>
+          <p class="tl-role">SMPN 6 Kota Sukabumi</p>
+          <!-- <p class="tl-company">UNTUK PROFESI</p> -->
+          <!-- <p class="tl-desc">"UNTUK KATA-KATA"</p> -->
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year">2015 – 2021</div>
+        <div>
+          <p class="tl-role">SDN CISUDA Kota Sukabumi</p>
+          <!-- <p class="tl-company">UNTUK PROFESI</p> -->
+          <!-- <p class="tl-desc">"UNTUK KATA-KATA"</p> -->
+        </div>
+      </div>
+
+      <!-- <div class="timeline-item">
+        <div class="tl-year">2015 – 2019</div>
+        <div>
+          <p class="tl-role">S1 Teknik Informatika</p>
+          <p class="tl-company">Institut Teknologi Bandung</p>
+          <p class="tl-desc">Lulus dengan IPK 3.87. Aktif di UKM Desain Grafis dan menjadi ketua tim di berbagai hackathon nasional.</p>
+        </div>
+      </div>
+    </div> -->
+
+    <div style="margin-top:40px;" class="reveal">
+      <a href="Muhammad Faiz ilham CV Kreatif.pdf" class="btn btn-primary" style="display:inline-block;">Lihat CV</a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <p class="section-label reveal">Karya yang pernah di buat</p>
+    <h2 class="reveal">Portofolio</h2>
+    <p class="section-desc reveal">Beberapa proyek yang saya pernah buat.</p>
+
+    <div class="projects-grid">
+      
+      <a href="https://faiziilham29-cmd.github.io/Game-Lompat/Lompat/" class="project-card reveal" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#1a1a40,#2d1f5e);">📱</div>
+        
+        <div class="project-body">
+          <p class="project-tag">Game</p>
+          <p class="project-title">Lompat Sederhana</p>
+          <!-- <p class="project-desc">Riset mendalam dan redesign alur checkout yang mengurangi cart abandonment sebesar 28%.</p> -->
+        </div>
+      </a>
+
+      <a href="https://faiziilham29-cmd.github.io/Game-Tembak/Game%20Tembak/" class="project-card reveal" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#0f2027,#203a43);">📱</div>
+        <div class="project-body">
+          <p class="project-tag">Game</p>
+          <p class="project-title">Tembak Sederhana</p>
+          <!-- <p class="project-desc">Aplikasi manajemen keuangan personal dengan visualisasi data yang intuitif dan gamifikasi.</p> -->
+        </div>
+      </a>
+
+      <a href="https://github.com/faiziilham29-cmd/gameGBK-asli" class="project-card reveal" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#ff5e00,#ff0000);">✊</div>
+        <div class="project-body">
+          <p class="project-tag">Game</p>
+          <p class="project-title">Gunting Kertas Batu</p>
+          <!-- <p class="project-desc">Aplikasi manajemen keuangan personal dengan visualisasi data yang intuitif dan gamifikasi.</p> -->
+        </div>
+
+        <div class="project-item" data-category="design">
+        <a href="animasi m.faiz.mkv" class="project-card reveal" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#e87d0d,#914c03);">🎨</div>
+          <div class="project-body">
+            <p class="project-tag">Blender / 3D</p>
+            <p class="project-title">3D Modeling Kelas</p>
+            <!-- <p class="project-desc">Koleksi hasil render aset visual dan eksplorasi pembuatan model 3D menggunakan software Blender.</p> -->
+          </div>
+        </a>
+      </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <p class="section-label" style="margin-bottom:16px;">Hubungi Saya</p>
+      <h2>Contact me</h2>
+      <p class="section-desc">
+        Punya ide? atau ingin sekedar ngobrol Hubungi saya saja. 
+      </p>
+      <!-- <a href="https://mail.google.com/mail/?view=cm&fs=1&to=faiziilham29@gmail.com" target="_blank" class="btn btn-primary">✉ Kirim Email</a> -->
+      <div class="contact-links">
+  <a href="https://linkedin.com/in/muhammad-faiz-ilham-420526417" class="contact-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+    Linkedin
+  </a>
+  <a href="https://maps.google.com/?q=Sukabumi" class="contact-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/></svg>
+    Lokasi
+  </a>
+  <a href="https://wa.me/6283808699130" class="contact-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    WhatsApp
+  </a>
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=faiziilham29@gmail.com" target="_blank" class="contact-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.713l-11.985-9.713h23.971l-11.986 9.713zm-5.425-1.822l-6.575-5.329v12.501l6.575-7.172zm10.85 0l6.575 7.172v-12.501l-6.575 5.329zm-1.557 1.261l-3.868 3.135-3.868-3.135-8.11 8.848h23.956l-8.11-8.848z"/></svg>
+  Gmail
+  </a>
+</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Muhammad Faiz Ilham</p>
+</footer>
+
+<script>
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function updateNav() {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 100;
+      if (window.scrollY >= top) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  // Smooth scroll for nav
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
